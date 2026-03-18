@@ -63,7 +63,28 @@ Key Differences:
 **Expected Output:**  
 Square of 6 is 36
 
-<img width="1913" height="853" alt="image" src="https://github.com/user-attachments/assets/66c595c6-3732-4ac0-b102-dd1cc219fa61" />
+**Program:**
+
+```sql
+--Create the Procedure
+CREATE OR REPLACE PROCEDURE find_square (num IN NUMBER) IS
+    result NUMBER;
+BEGIN
+    result := num * num;
+    DBMS_OUTPUT.PUT_LINE('Square of ' || num || ' is ' || result);
+END;
+/
+```
+
+```sql
+--Call the Procedure
+BEGIN
+    find_square(6);
+END;
+/
+```
+
+<img width="539" height="197" alt="image" src="https://github.com/user-attachments/assets/53875397-8383-4922-840b-e798b1c133f4" />
 
 
 ---
@@ -80,7 +101,37 @@ Square of 6 is 36
 **Expected Output:**  
 Factorial of 5 is 120
 
-<img width="1906" height="660" alt="image" src="https://github.com/user-attachments/assets/58043ef9-d245-4a1f-be6b-4e6dda5ac3aa" />
+**Program:**
+```sql
+--Create the Function
+CREATE OR REPLACE FUNCTION get_factorial (n IN NUMBER)
+RETURN NUMBER
+IS
+    fact NUMBER := 1;
+BEGIN
+    FOR i IN 1..n LOOP
+        fact := fact * i;
+    END LOOP;
+
+    RETURN fact;
+END;
+/
+```
+
+```sql
+--Call the Function
+DECLARE
+    result NUMBER;
+BEGIN
+    result := get_factorial(5);
+    DBMS_OUTPUT.PUT_LINE('Factorial of 5 is ' || result);
+END;
+/
+```
+
+**Output:**
+
+<img width="533" height="201" alt="image" src="https://github.com/user-attachments/assets/6e8b3f6f-9a0b-49c7-b384-5f856bf58125" />
 
 
 ---
@@ -95,8 +146,30 @@ Factorial of 5 is 120
 
 **Expected Output:**  
 12 is Even
+**Program:**
+```sql
+--Create the Procedure
+CREATE OR REPLACE PROCEDURE check_even_odd (num IN NUMBER) IS
+BEGIN
+    IF MOD(num, 2) = 0 THEN
+        DBMS_OUTPUT.PUT_LINE(num || ' is Even');
+    ELSE
+        DBMS_OUTPUT.PUT_LINE(num || ' is Odd');
+    END IF;
+END;
+/
+```
+```sql
+--Call the Procedure
+BEGIN
+    check_even_odd(12);
+END;
+/
+```
 
-<img width="1902" height="871" alt="image" src="https://github.com/user-attachments/assets/ce47532b-8a89-4906-962d-b1e82f03b7fb" />
+**Output:**
+
+<img width="535" height="202" alt="image" src="https://github.com/user-attachments/assets/60de8cee-8560-4fb2-9a5d-095f08ba9867" />
 
 ---
 
@@ -112,7 +185,40 @@ Factorial of 5 is 120
 **Expected Output:**  
 Reversed number of 1234 is 4321
 
-<img width="1437" height="852" alt="image" src="https://github.com/user-attachments/assets/12a8ceb7-578f-4c8d-8614-164e5b77ec63" />
+**Program:**
+```sql
+--Create the Function
+CREATE OR REPLACE FUNCTION reverse_number (n IN NUMBER)
+RETURN NUMBER
+IS
+    rev NUMBER := 0;
+    temp NUMBER := n;
+    rem NUMBER;
+BEGIN
+    WHILE temp > 0 LOOP
+        rem := MOD(temp, 10);        -- Extract last digit
+        rev := rev * 10 + rem;       -- Build reversed number
+        temp := TRUNC(temp / 10);    -- Remove last digit
+    END LOOP;
+
+    RETURN rev;
+END;
+/
+```
+```sql
+--Call the Function
+DECLARE
+    result NUMBER;
+BEGIN
+    result := reverse_number(1234);
+    DBMS_OUTPUT.PUT_LINE('Reversed number of 1234 is ' || result);
+END;
+/
+```
+**Output:**
+
+<img width="532" height="239" alt="image" src="https://github.com/user-attachments/assets/a17fad65-27b2-45e5-8c36-6cff76ea65b9" />
+
 
 ---
 
@@ -132,7 +238,32 @@ Multiplication table of 5:
 ...  
 5 x 10 = 50
 
-<img width="1918" height="911" alt="image" src="https://github.com/user-attachments/assets/9d71baaa-2a4f-4b0f-87b2-e6483d63a588" />
+**Program:**
+```sql
+--Create the Procedure
+CREATE OR REPLACE PROCEDURE print_table (num IN NUMBER) IS
+BEGIN
+    DBMS_OUTPUT.PUT_LINE('Multiplication table of ' || num || ':');
+
+    FOR i IN 1..10 LOOP
+        DBMS_OUTPUT.PUT_LINE(num || ' x ' || i || ' = ' || (num * i));
+    END LOOP;
+END;
+/
+```
+
+```sql
+--Call the Procedure
+BEGIN
+    print_table(5);
+END;
+/
+```
+
+**Output:**
+
+<img width="529" height="309" alt="image" src="https://github.com/user-attachments/assets/f00a2323-c137-4f11-a678-258999ca9fa6" />
+
 
 
 ## RESULT
