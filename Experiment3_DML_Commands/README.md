@@ -47,31 +47,68 @@ SELECT column1, column2 FROM table_name WHERE condition;
 ```
 **Question 1**
 --
--- Paste Question 1 here
+Write a SQL statement to Increase quantity of all products by 10% to adjust for surplus stock counted
+
+Products table
+
+---------------
+product_id
+product_name
+category
+cost_price
+sell_price
+reorder_lvl
+quantity
+supplier_id
 
 ```sql
--- Paste your SQL code below for Question 1
+update Products 
+set quantity=quantity*1.10;
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1306" height="406" alt="image" src="https://github.com/user-attachments/assets/42e1f945-aace-4ea7-abd2-53d87220267a" />
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+Write a SQL query to find all orders that meet the following conditions. Exclude combinations of order date equal to '2012-08-17' or customer ID greater than 3005 and purchase amount less than 1000.
+
+Sample table : orders
+
+ord_no      purch_amt   ord_date    customer_id  salesman_id
+----------  ----------  ----------  -----------  -----------
+70001       150.5       2012-10-05  3005         5002
+70009       270.65      2012-09-10  3001         5005
+70002       65.26       2012-10-05  3002         5001
 
 ```sql
--- Paste your SQL code below for Question 2
+select * from orders where NOT(ord_date = '2012-08-17' OR (customer_id > 3005 AND purch_amt < 1000));
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="868" height="503" alt="image" src="https://github.com/user-attachments/assets/653e3161-42a4-45cf-a494-4eeac317f4e3" />
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write a query to find the top 2 products with the highest discount percentage. Return product_id, original_price, discount_percentage, and discounted_price.
+
+Sample table: Products
+
+product_id | original_price | discount_percentage
+
+-----------------------------------------------------------
+
+"101" "50" "0.1"
+
+"102" "150" "0.15"
+
+"103" "200" "0.2"
+
+"104" "300" "0.25"
 
 ```sql
 -- Paste your SQL code below for Question 3
