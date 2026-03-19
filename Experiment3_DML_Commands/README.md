@@ -111,96 +111,170 @@ product_id | original_price | discount_percentage
 "104" "300" "0.25"
 
 ```sql
--- Paste your SQL code below for Question 3
+select product_id,original_price,discount_percentage,(original_price-(original_price*discount_percentage)) as discounted_price from Products order by discount_percentage desc limit 2; 
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1259" height="291" alt="image" src="https://github.com/user-attachments/assets/d88365e6-8138-4c3b-8eea-e4706d187495" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write a SQL query to Delete customers from 'customer' table where 'WORKING_AREA' is 'New York'.
+
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
+
 
 ```sql
--- Paste your SQL code below for Question 4
+delete from Customer where WORKING_AREA = "New York";
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1344" height="539" alt="image" src="https://github.com/user-attachments/assets/ca1830b1-453c-4576-abed-390535174055" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to Delete customers from 'customer' table where 'GRADE' is less than 2.
+
+ 
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
 
 ```sql
--- Paste your SQL code below for Question 5
+delete from Customer where GRADE<2;
 ```
 
 **Output:**
 
-![Output5](output.png)
+<img width="464" height="386" alt="image" src="https://github.com/user-attachments/assets/f6a2a96c-eb83-417c-bc66-7be47d07a928" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
+Write a SQL statement to Increase the selling price by 10% for all products in the 'Bakery' category in the products table.
+
+Products table
+
+---------------
+product_id
+product_name
+category
+cost_price
+sell_price
+reorder_lvl
+quantity
+supplier_id
 
 ```sql
--- Paste your SQL code below for Question 6
+update Products 
+set sell_price=sell_price*1.10 where category='Bakery';
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1329" height="375" alt="image" src="https://github.com/user-attachments/assets/f53a45f8-15f2-43f3-962f-2c0aace25a7b" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Write a query to fetch details of employees with the address as “DELHI(DEL)” from EmployeeInfo table.
+
+<img width="812" height="143" alt="image" src="https://github.com/user-attachments/assets/5502ebaa-cccb-41f3-a9f0-b838b6f2cb14" />
+
 
 ```sql
--- Paste your SQL code below for Question 7
+select * from EmployeeInfo where Address = "Delhi(DEL)";
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1254" height="324" alt="image" src="https://github.com/user-attachments/assets/b7ea9e31-348f-4b80-97f6-37bb6003fcac" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL query to find all those customers who does not have any grade. Return customer_id, cust_name, city, grade, salesman_id.
+
+Sample table: customer
+
+customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
 
 ```sql
--- Paste your SQL code below for Question 8
+select * from customer where grade IS NULL;
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1163" height="435" alt="image" src="https://github.com/user-attachments/assets/aedd5801-90af-4df5-916f-66ae40cd6eaa" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Write a SQL query to Delete customers with 'GRADE' 3 or 'AGENT_CODE' 'A008' whose 'OUTSTANDING_AMT' is less than 5000
+
+Sample table: Customer
+
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+  
+|CUST_CODE  | CUST_NAME   | CUST_CITY   | WORKING_AREA | CUST_COUNTRY | GRADE | OPENING_AMT | RECEIVE_AMT | PAYMENT_AMT |OUTSTANDING_AMT| PHONE_NO     | AGENT_CODE |
++-----------+-------------+-------------+--------------+--------------+-------+-------------+-------------+-------------+---------------+--------------+------------+
+| C00013    | Holmes      | London      | London       | UK           |     2 |     6000.00 |     5000.00 |     7000.00 |       4000.00 | BBBBBBB      | A003       |
+| C00001    | Micheal     | New York    | New York     | USA          |     2 |     3000.00 |     5000.00 |     2000.00 |       6000.00 | CCCCCCC      | A008       |
+| C00020    | Albert      | New York    | New York     | USA          |     3 |     5000.00 |     7000.00 |     6000.00 |       6000.00 | BBBBSBB      | A008       |
 
 ```sql
--- Paste your SQL code below for Question 9
+delete from Customer where (GRADE = 3 OR AGENT_CODE = 'A008') AND OUTSTANDING_AMT < 5000;
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1337" height="312" alt="image" src="https://github.com/user-attachments/assets/1b4959e6-2995-4cb0-97ae-d02b54a93333" />
+
 
 **Question 10**
 ---
--- Paste Question 10 here
+Write a SQL query to Concatenate the first three characters of the employee's name with the last three characters of their job title.
+
+Table name: emp
+
+name        type
+----------  ----------
+empno       INT
+ename       VARCHAR(100)
+job         VARCHAR(50)
+mgr         INT
+hiredate    DATE
+sal         DECIMAL(10,2)
+comm        DECIMAL(10,2)
+deptno      INT
 
 ```sql
--- Paste your SQL code below for Question 10
+select ename,job,substr(ename,1,3)||substr(job,-3) as ConcatenatedString from emp;
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="601" height="432" alt="image" src="https://github.com/user-attachments/assets/db5a45e4-8ee7-4ffb-89a7-138db5595b0c" />
+
 
 ## RESULT
 Thus, the SQL queries to implement DML commands have been executed successfully.
